@@ -1,5 +1,9 @@
 <template>
-  <TheTwoColumnsLayout />
+  <TheTwoColumnsLayout
+    :leftColumnClass="'col-md-8 bg-vue'"
+    :rightColumnClass="'col-md-4'"
+    :fullsize="true"
+  />
 </template>
 
 <script>
