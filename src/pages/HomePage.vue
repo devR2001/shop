@@ -15,16 +15,20 @@
         </div>
       </div>
     </template>
-    <template #rightCol></template>
+    <template #rightCol>
+      <RegisterVueVue />
+    </template>
   </TheTwoColumnsLayout>
 </template>
 
 <script>
 import TheTwoColumnsLayout from "@/layouts/TheTwoColumnsLayout.vue";
+import RegisterVueVue from "@/components/auth/RegisterVue.vue";
 export default {
   name: "HomePage",
   components: {
     TheTwoColumnsLayout,
+    RegisterVueVue,
   },
 };
 </script>
