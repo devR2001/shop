@@ -1,12 +1,13 @@
 <template>
-  <div class="container">
-    <h1 class="bg-vue text-vue2">Test</h1>
-  </div>
+  <TheTwoColumnsLayout />
 </template>
 
 <script>
+import TheTwoColumnsLayout from "./layouts/TheTwoColumnsLayout.vue";
+
 export default {
   name: "App",
+  components: { TheTwoColumnsLayout },
 };
 </script>
 
