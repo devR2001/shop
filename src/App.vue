@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="container">
+    <h1 class="bg-vue text-vue2">Test</h1>
+  </div>
 </template>
 
 <script>
@@ -14,5 +16,20 @@ export default {
 @import "~animate.css/animate.min.css";
 
 .bg-vue {
+  background-color: rgb(52, 73, 94);
+  color: white;
+}
+
+.bg-vue2 {
+  background-color: rgb(65, 184, 131);
+  color: white;
+}
+
+.text-vue {
+  color: rgb(52, 73, 94);
+}
+
+.text-vue2 {
+  color: rgb(65, 184, 131);
 }
 </style>
