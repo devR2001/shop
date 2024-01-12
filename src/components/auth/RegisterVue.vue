@@ -13,17 +13,30 @@
         <!-- role="button" bedeutet, dass sich der Cursor ändert! -->
       </p>
     </div>
-    <form>
+    <Form></Form>
+    <Form @submit="submitData">
       <div class="form-row">
         <div class="form-group col-md-8 offset-2">
           <label for="email"><strong>E-Mail-Adresse</strong></label>
-          <input type="email" class="form-control" id="email" />
+          <Field
+            as="input"
+            name="email"
+            type="email"
+            class="form-control"
+            id="email"
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-8 offset-2">
           <label for="password"><strong>Passwort</strong></label>
-          <input type="password" class="form-control" id="password" />
+          <Field
+            as="input"
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+          />
         </div>
       </div>
       <div class="form-row">
@@ -31,7 +44,9 @@
           <label for="confirmPassword"
             ><strong>Passwort wiederholen</strong></label
           >
-          <input
+          <Field
+            as="input"
+            name="confirmPassword"
             type="confirmPassword"
             class="form-control"
             id="confirmPassword"
@@ -45,13 +60,24 @@
           </div>
         </div>
       </div>
-    </form>
+    </Form>
   </div>
 </template>
 
 <script>
+import { Form, Field } from "vee-validate";
+
 export default {
   name: "RegisterVue",
+  components: {
+    Form,
+    Field,
+  },
+  methods: {
+    submitData(values) {
+      console.log(values);
+    },
+  },
 };
 </script>
 
