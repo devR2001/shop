@@ -7,7 +7,7 @@
       <h2>Jetzt registrieren</h2>
       <p>
         oder
-        <a class="text-vue2" role="button"
+        <a class="text-vue2" role="button" @click="changeComponent('login')"
           >Melden Sie sich mit Ihrem Konto an</a
         >
         <!-- role="button" bedeutet, dass sich der Cursor ändert! -->
@@ -83,6 +83,14 @@ export default {
     Form,
     Field,
   },
+  emits: {
+    "change-component": (payload) => {
+      if (payload.componentName !== "login") {
+        return false;
+      }
+      return true;
+    },
+  },
   data() {
     const schema = yup.object().shape({
       email: yup
@@ -105,6 +113,9 @@ export default {
   methods: {
     submitData(values) {
       console.log(values);
+    },
+    changeComponent(componentName) {
+      this.$emit("change-component", { componentName });
     },
   },
 };

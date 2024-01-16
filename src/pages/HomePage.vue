@@ -16,19 +16,34 @@
       </div>
     </template>
     <template #rightCol>
-      <RegisterVueVue />
-    </template>
+      <component
+        :is="componentName"
+        @change-component="changeComponent"
+      ></component
+    ></template>
   </TheTwoColumnsLayout>
 </template>
 
 <script>
 import TheTwoColumnsLayout from "@/layouts/TheTwoColumnsLayout.vue";
-import RegisterVueVue from "@/components/auth/RegisterVue.vue";
+import RegisterVue from "@/components/auth/RegisterVue.vue";
+import LoginVue from "@/components/auth/LoginVue.vue";
 export default {
   name: "HomePage",
   components: {
     TheTwoColumnsLayout,
-    RegisterVueVue,
+    RegisterVue,
+    LoginVue,
+  },
+  data() {
+    return {
+      componentName: "register",
+    };
+  },
+  methods: {
+    changeComponent(payload) {
+      this.componentName = payload.componentName;
+    },
   },
 };
 </script>
