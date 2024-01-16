@@ -19,8 +19,8 @@
       <component
         :is="componentName"
         @change-component="changeComponent"
-      ></component
-    ></template>
+      ></component>
+    </template>
   </TheTwoColumnsLayout>
 </template>
 
@@ -28,6 +28,7 @@
 import TheTwoColumnsLayout from "@/layouts/TheTwoColumnsLayout.vue";
 import RegisterVue from "@/components/auth/RegisterVue.vue";
 import LoginVue from "@/components/auth/LoginVue.vue";
+
 export default {
   name: "HomePage",
   components: {
