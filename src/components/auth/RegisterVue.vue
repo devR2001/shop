@@ -14,7 +14,8 @@
       </p>
     </div>
     <Form></Form>
-    <Form @submit="submitData">
+    <Form @submit="submitData" :validation-schema="schema" v-slot="{ errors }">
+      <div>{{ errors }}</div>
       <div class="form-row">
         <div class="form-group col-md-8 offset-2">
           <label for="email"><strong>E-Mail-Adresse</strong></label>
@@ -25,6 +26,9 @@
             class="form-control"
             id="email"
           />
+          <small class="text-danger" v-if="errors.email">{{
+            errors.email
+          }}</small>
         </div>
       </div>
       <div class="form-row">
@@ -66,12 +70,25 @@
 
 <script>
 import { Form, Field } from "vee-validate";
+import * as yup from "yup";
 
 export default {
   name: "RegisterVue",
   components: {
     Form,
     Field,
+  },
+  data() {
+    const schema = yup.object().shape({
+      email: yup
+        .string()
+        .required("E-Mail Adresse wird benötigt")
+        .trim()
+        .email("Das ist keine gültige E-Mail Adresse"),
+    });
+    return {
+      schema,
+    };
   },
   methods: {
     submitData(values) {
