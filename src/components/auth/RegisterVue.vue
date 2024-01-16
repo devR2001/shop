@@ -15,7 +15,6 @@
     </div>
     <Form></Form>
     <Form @submit="submitData" :validation-schema="schema" v-slot="{ errors }">
-      <div>{{ errors }}</div>
       <div class="form-row">
         <div class="form-group col-md-8 offset-2">
           <label for="email"><strong>E-Mail-Adresse</strong></label>
@@ -41,6 +40,9 @@
             class="form-control"
             id="password"
           />
+          <small class="text-danger" v-if="errors.password">{{
+            errors.password
+          }}</small>
         </div>
       </div>
       <div class="form-row">
@@ -55,6 +57,9 @@
             class="form-control"
             id="confirmPassword"
           />
+          <small class="text-danger" v-if="errors.confirmPassword">{{
+            errors.confirmPassword
+          }}</small>
         </div>
       </div>
       <div class="form-row mt-3">
@@ -85,6 +90,13 @@ export default {
         .required("E-Mail Adresse wird benötigt")
         .trim()
         .email("Das ist keine gültige E-Mail Adresse"),
+      password: yup
+        .string()
+        .required("Ein Passwort wird benötigt.")
+        .min(6, "Das Passwort muss mindestend 6 Zeichen lang sein"),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref("password")], "Passwörter stimmen nicht überein"),
     });
     return {
       schema,
