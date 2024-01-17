@@ -102,8 +102,10 @@ export default {
   computed: {
     errorDisplayText() {
       if (this.error) {
-        if (this.error.includes("EMAIL_EXISTS")) {
-          return "Die E-Mail Adresse existiert bereits.";
+        if (this.error.includes("INVALID_PASSWORD")) {
+          return "Das Passwort wir nicht gültig.";
+        } else if (this.error.includes("EMAIL_NOT_FOUND")) {
+          return "E-Mail Adresse konnte nicht gefunden werden.";
         }
         return "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sue es noch einmal.";
       }
@@ -115,20 +117,19 @@ export default {
       this.isLoading = true;
       this.error = "";
       // console.log(values);
-      const signupDO = {
+      const signinDO = {
         email: values.email,
         password: values.password,
         returnSecureToken: true,
       };
       axios
         .post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`,
-          signupDO
+          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`,
+          signinDO
         )
         .then((response) => {
           console.log(response);
           this.isLoading = false;
-          this.changeComponent("login");
         })
         .catch((error) => {
           // console.log({ error });
