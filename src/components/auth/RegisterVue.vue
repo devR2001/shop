@@ -133,6 +133,7 @@ export default {
   methods: {
     submitData(values) {
       this.isLoading = true;
+      this.error = "";
       // console.log(values);
       const signupDO = {
         email: values.email,
@@ -147,6 +148,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.isLoading = false;
+          this.changeComponent("login");
         })
         .catch((error) => {
           // console.log({ error });
