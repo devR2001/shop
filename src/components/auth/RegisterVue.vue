@@ -13,7 +13,9 @@
         <!-- role="button" bedeutet, dass sich der Cursor ändert! -->
       </p>
     </div>
-    <Form></Form>
+    <div class="alert alert-danger col-md-8 offset-2">
+      {{ errorDisplayText }}
+    </div>
     <Form @submit="submitData" :validation-schema="schema" v-slot="{ errors }">
       <div class="form-row">
         <div class="form-group col-md-8 offset-2">
@@ -77,6 +79,7 @@
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
 import axios from "axios";
+import { FIREBASE_API_KEY } from "../../config/firebase";
 
 export default {
   name: "RegisterVue",
@@ -109,7 +112,19 @@ export default {
     });
     return {
       schema,
+      error: "",
     };
+  },
+  computed: {
+    errorDisplayText() {
+      if (this.error) {
+        if (this.error.includes("EMAIL_EXISTS")) {
+          return "Die E-Mail Adresse existiert bereits.";
+        }
+        return "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sue es noch einmal.";
+      }
+      return "";
+    },
   },
   methods: {
     submitData(values) {
@@ -121,14 +136,15 @@ export default {
       };
       axios
         .post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC_H6olvLXNioAh1CE_0VmG-7A_QtQEq2U",
+          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`,
           signupDO
         )
         .then((response) => {
           console.log(response);
         })
         .catch((error) => {
-          console.log({ error });
+          // console.log({ error });
+          this.error = error.response.data.error.message;
         });
     },
     changeComponent(componentName) {
