@@ -67,7 +67,10 @@
       <div class="form-row mt-3">
         <div class="form-group col-md-8 offset-2">
           <div class="d-grid">
-            <button class="btn bg-vue">Registrieren</button>
+            <button class="btn bg-vue">
+              <span v-if="!isLoading">Registrieren</span>
+              <span v-else class="spinner-border spinner-border-sm"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -113,6 +116,7 @@ export default {
     return {
       schema,
       error: "",
+      isLoading: false,
     };
   },
   computed: {
@@ -128,6 +132,7 @@ export default {
   },
   methods: {
     submitData(values) {
+      this.isLoading = true;
       // console.log(values);
       const signupDO = {
         email: values.email,
@@ -141,10 +146,12 @@ export default {
         )
         .then((response) => {
           console.log(response);
+          this.isLoading = false;
         })
         .catch((error) => {
           // console.log({ error });
           this.error = error.response.data.error.message;
+          this.isLoading = false;
         });
     },
     changeComponent(componentName) {
