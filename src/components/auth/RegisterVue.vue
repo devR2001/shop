@@ -76,6 +76,7 @@
 <script>
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
+import axios from "axios";
 
 export default {
   name: "RegisterVue",
@@ -112,7 +113,23 @@ export default {
   },
   methods: {
     submitData(values) {
-      console.log(values);
+      // console.log(values);
+      const signupDO = {
+        email: values.email,
+        password: values.password,
+        returnSecureToken: true,
+      };
+      axios
+        .post(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC_H6olvLXNioAh1CE_0VmG-7A_QtQEq2U",
+          signupDO
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log({ error });
+        });
     },
     changeComponent(componentName) {
       this.$emit("change-component", { componentName });
