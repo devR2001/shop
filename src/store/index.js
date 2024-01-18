@@ -14,17 +14,22 @@ const store = createStore({
     },
   },
   actions: {
-    signup(context, payload) {
-      const signupDO = {
+    auth(context, payload) {
+      let url = "";
+      if (payload.mode === "signin") {
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`;
+      } else if (payload.mode === "signup") {
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`;
+      } else {
+        return;
+      }
+      const authDO = {
         email: payload.email,
         password: payload.password,
         returnSecureToken: true,
       };
       return axios
-        .post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`,
-          signupDO
-        )
+        .post(url, authDO)
         .then((response) => {
           // console.log(response);
           context.commit("setUser", {
@@ -39,6 +44,20 @@ const store = createStore({
           );
           throw errorMessage;
         });
+    },
+    signup(context, payload) {
+      const signupDO = {
+        ...payload,
+        mode: "signup",
+      };
+      return context.dispatch("auth", signupDO);
+    },
+    signin(context, payload) {
+      const signinDO = {
+        ...payload,
+        mode: "signin",
+      };
+      return context.dispatch("auth", signinDO);
     },
   },
   getters: {},
