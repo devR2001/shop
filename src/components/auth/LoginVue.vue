@@ -123,7 +123,9 @@ export default {
         .then(() => {
           this.loading = false;
           console.log("Login erfolgreich");
-          // this.changeComponent("login");
+          // Weiterleitung zum internen Bereich
+          // this.$router.push("/shop");
+          this.$router.push({ path: "/shop" });
         })
         .catch((error) => {
           this.error = error.message;
