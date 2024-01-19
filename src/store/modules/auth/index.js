@@ -64,6 +64,16 @@ const actions = {
     };
     return context.dispatch("auth", signinDO);
   },
+  signout(context) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("expiresIn");
+
+    context.commit("setUser", {
+      token: null,
+      userId: null,
+    });
+  },
 };
 const getters = {};
 

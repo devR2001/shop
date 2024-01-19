@@ -15,7 +15,7 @@
       <button class="btn bg-vue me-3">
         <i class="fas fa-shopping-cart"></i> Warenkorb (10€)
       </button>
-      <button class="btn bg-vue2">
+      <button class="btn bg-vue2" @click="signOut()">
         <i class="fas fa-sign-out-alt"></i> Logout
       </button>
     </div>
@@ -25,6 +25,16 @@
 <script>
 export default {
   name: "TheNavbar",
+  methods: {
+    async signOut() {
+      try {
+        await this.$store.dispatch("signout");
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 
