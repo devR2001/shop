@@ -29,7 +29,14 @@ const actions = {
     return axios
       .post(url, authDO)
       .then((response) => {
-        // console.log(response);
+        // Daten im LocalStorage speichern
+        const expiresIn = Number(response.data.expiresIn) * 1000;
+        const expDate = new Date().getTime() + expiresIn;
+
+        localStorage.setItem("token", response.data.idToken);
+        localStorage.setItem("userId", response.data.localId);
+        localStorage.setItem("expiresIn", expDate);
+
         context.commit("setUser", {
           userId: response.data.localId,
           token: response.data.idToken,
