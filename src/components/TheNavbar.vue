@@ -1,13 +1,15 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-vue navbar-dark">
     <div class="container">
-      <a class="navbar-brand">Der Shop</a>
+      <router-link to="/shop" class="navbar-brand">Der Shop</router-link>
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
-          <a class="nav-link">Startseite</a>
+          <router-link to="/shop" class="nav-link">Startseite</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Neuer Artikel</a>
+          <router-link to="/shop/item/create" class="nav-link"
+            >Neuer Artikel</router-link
+          >
         </li>
       </ul>
       <button class="btn bg-vue me-3">
