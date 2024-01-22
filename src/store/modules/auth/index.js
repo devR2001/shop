@@ -1,3 +1,4 @@
+import { toPrimitive } from "core-js/fn/symbol";
 import { FIREBASE_API_KEY } from "../../../config/firebase";
 import axios from "axios";
 
@@ -69,6 +70,27 @@ const actions = {
       mode: "signin",
     };
     return context.dispatch("auth", signinDO);
+  },
+  autoSignin(context) {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const expiresIn = localStorage.getItem("expiresIn");
+    const timeLeft = Number(expiresIn) - new Date().getTime();
+
+    if (timeLeft < 0) {
+      return;
+    }
+
+    timer = setTimeout(() => {
+      context.dispatch("autoSignout");
+    }, expiresIn);
+
+    if (token && userId) {
+      context.commit("setUser", {
+        token: token,
+        userId: userId,
+      });
+    }
   },
   signout(context) {
     localStorage.removeItem("token");
