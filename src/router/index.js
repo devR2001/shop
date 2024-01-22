@@ -22,8 +22,19 @@ const router = createRouter({
     {
       path: "/shop",
       component: ShopPage,
+      meta: {
+        requiresAuth: true,
+      },
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+    next("/");
+  } else {
+    next();
+  }
 });
 
 export default router;
