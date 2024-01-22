@@ -1,4 +1,3 @@
-import { toPrimitive } from "core-js/fn/symbol";
 import { FIREBASE_API_KEY } from "../../../config/firebase";
 import axios from "axios";
 
@@ -109,7 +108,9 @@ const actions = {
     context.dispatch("signout");
   },
 };
-const getters = {};
+const getters = {
+  isAuthenticated: (state) => !!state.token,
+};
 
 const authModule = {
   state,

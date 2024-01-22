@@ -2,6 +2,8 @@ import HomePageVue from "@/pages/HomePage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
+import store from "../store";
+
 const router = createRouter({
   //Optionen
   history: createWebHistory(),
@@ -9,6 +11,13 @@ const router = createRouter({
     {
       path: "/",
       component: HomePageVue,
+      beforeEnter: (to, from, next) => {
+        if (store.getters.isAuthenticated) {
+          next("/shop");
+        } else {
+          next();
+        }
+      },
     },
     {
       path: "/shop",
