@@ -15,12 +15,15 @@ const actions = {
       description: payload.description,
       price: payload.price,
     };
+    const token = context.rootState.auth.token;
     axios
       .post(
-        "https://vue-3-shop-backend-542b4-default-rtdb.europe-west1.firebasedatabase.app/products.json",
+        `https://vue-3-shop-backend-542b4-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`,
         productItem
       )
-      .then(() => {})
+      .then((response) => {
+        console.log("Response:", response);
+      })
       .catch((error) => {
         throw new Error(error);
       });
