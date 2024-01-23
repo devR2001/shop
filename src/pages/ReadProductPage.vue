@@ -9,7 +9,7 @@
               Zurück
             </button>
           </h1>
-          <div class="card mt-4">
+          <div class="card mt-4" v-if="product">
             <div class="row no-gutters">
               <div class="col-mg-4">
                 <img
@@ -66,24 +66,27 @@ export default {
   components: {
     TheShopLayout,
   },
-  data() {
-    return {
-      id: null,
-    };
+  props: {
+    id: String,
   },
+  // data() {
+  //   return {
+  //     id: null,
+  //   };
+  // },
   computed: {
     product() {
       return this.$store.getters.product(this.id);
     },
   },
-  created() {
-    this.id = this.$route.params.id;
-  },
-  beforeRouteUpdate(to) {
-    // console.log("to", to);
-    // console.log("from", from);
-    this.id = to.params.id;
-  },
+  // created() {
+  //   this.id = this.$route.params.id;
+  //  },
+  // beforeRouteUpdate(to) {
+  //   console.log("to", to);
+  //   console.log("from", from);
+  //   this.id = to.params.id;
+  // },
 };
 </script>
 
