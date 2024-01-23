@@ -40,6 +40,19 @@
               </div>
             </div>
           </div>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h4>Das könnte Sie auch interessieren...</h4>
+              <router-link
+                :to="{
+                  name: 'ReadProduct',
+                  params: { id: '-MgEuw10sUAOonJ0gazr' },
+                }"
+              >
+                -MgEuw10sUAOonJ0gazr
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </template>
@@ -65,6 +78,11 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
+  },
+  beforeRouteUpdate(to) {
+    // console.log("to", to);
+    // console.log("from", from);
+    this.id = to.params.id;
   },
 };
 </script>
