@@ -53,6 +53,19 @@ export default {
   components: {
     TheShopLayout,
   },
+  data() {
+    return {
+      id: null,
+    };
+  },
+  computed: {
+    product() {
+      return this.$store.getters.product(this.id);
+    },
+  },
+  created() {
+    this.id = this.$route.params.id;
+  },
 };
 </script>
 
