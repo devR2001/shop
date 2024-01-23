@@ -2,7 +2,7 @@
   <TheShopLayout>
     <template #default>
       <div class="row">
-        <div class="col-3 m-3" v-for="i in 3" :key="i">
+        <div class="col-3 m-3" v-for="product in products" :key="product.id">
           <ProductListItem />
         </div>
       </div>
@@ -18,6 +18,11 @@ export default {
   components: {
     TheShopLayout,
     ProductListItem,
+  },
+  computed: {
+    products() {
+      return this.$store.getters.products;
+    },
   },
 };
 </script>

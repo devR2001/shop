@@ -110,6 +110,7 @@ const actions = {
 };
 const getters = {
   isAuthenticated: (state) => !!state.token,
+  token: (state) => state.token,
 };
 
 const authModule = {
