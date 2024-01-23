@@ -2,11 +2,11 @@
   <div class="card">
     <img src="https://picsum.photos/200" />
     <div class="card-body">
-      <h5 class="card-title">Titel</h5>
-      <p class="card-text">Beschreibung</p>
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{ shortendDescription }}</p>
       <div class="text-center mt-3">
         <div class="lead">
-          <strong class="text-vue">15 €</strong>
+          <strong class="text-vue">{{ product.price }} €</strong>
         </div>
       </div>
     </div>
@@ -16,6 +16,17 @@
 <script>
 export default {
   name: "ProductListItem",
+  props: {
+    product: Object,
+  },
+  computed: {
+    shortendDescription() {
+      if (this.product.description.length < 80) {
+        return this.product.description;
+      }
+      return this.product.description.slice(0, 80) + "...";
+    },
+  },
 };
 </script>
 

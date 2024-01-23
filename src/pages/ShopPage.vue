@@ -3,7 +3,7 @@
     <template #default>
       <div class="row">
         <div class="col-3 m-3" v-for="product in products" :key="product.id">
-          <ProductListItem />
+          <ProductListItem :product="product" />
         </div>
       </div>
     </template>
