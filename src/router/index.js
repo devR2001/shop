@@ -3,6 +3,7 @@ import ShopPage from "@/pages/ShopPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import CreateProductPage from "@/pages/CreateProductPage.vue";
 import ReadProductPage from "@/pages/ReadProductPage.vue";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 import store from "../store";
 
@@ -44,6 +45,10 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
       },
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      component: NotFoundPage,
     },
   ],
 });
