@@ -49,6 +49,7 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)*",
       component: NotFoundPage,
+      // redirect: "/",
     },
   ],
 });
