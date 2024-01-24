@@ -9,6 +9,20 @@ const shopRoutes = [
       requiresAuth: true,
     },
   },
+  // Alternative Layout-Strategie
+  {
+    path: "v2/shop",
+    component: () => import("@/layouts/v2/TheShopLayout.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+    chrildren: [
+      {
+        path: "",
+        component: () => import("@/pages/v2/ShopPage.vue"),
+      },
+    ],
+  },
   {
     path: "/shop/create/product",
     component: CreateProductPage,
