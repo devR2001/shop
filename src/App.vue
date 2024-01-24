@@ -1,5 +1,5 @@
 <template>
-  <!-- <router-view v-slot="{ Component }">
+<!--   <router-view v-slot="{ Component }">
     <transition
       :enter-active-class="`animate__animated animate__${$route.meta.enterTransition}`"
       leave-active-class="animate__animated animate__fadeOut"
@@ -45,16 +45,13 @@ export default {
   background-color: rgb(52, 73, 94);
   color: white;
 }
-
 .bg-vue2 {
   background-color: rgb(65, 184, 131);
   color: white;
 }
-
 .text-vue {
   color: rgb(52, 73, 94);
 }
-
 .text-vue2 {
   color: rgb(65, 184, 131);
 }

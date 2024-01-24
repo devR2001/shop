@@ -31,15 +31,15 @@
 <script>
 // import TheTwoColumnsLayout from "../layouts/TheTwoColumnsLayout";
 import TheTwoColumnsLayout from "@/layouts/TheTwoColumnsLayout";
-import RegisterVue from "@/components/auth/RegisterVue";
-import LoginVue from "@/components/auth/LoginVue";
+import Register from "@/components/auth/Register";
+import Login from "@/components/auth/Login";
 
 export default {
   name: "HomePage",
   components: {
     TheTwoColumnsLayout,
-    RegisterVue,
-    LoginVue,
+    Register,
+    Login,
   },
   data() {
     return {
@@ -54,4 +54,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
