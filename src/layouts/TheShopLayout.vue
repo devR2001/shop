@@ -11,9 +11,8 @@
               mode="out-in"
               appear
               :key="$route.path"
+              ><slot v-if="true"><h1>Hauptbereich</h1></slot></transition
             >
-              <slot v-if="true"><h1>Hauptbereich</h1></slot>
-            </transition>
           </div>
         </div>
       </div>
@@ -22,7 +21,8 @@
 </template>
 
 <script>
-import TheNavbar from "@/components/TheNavbar.vue";
+import TheNavbar from "@/components/TheNavbar";
+
 export default {
   name: "TheShopLayout",
   components: {
@@ -31,4 +31,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

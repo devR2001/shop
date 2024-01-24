@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// import TheTwoColumnsLayout from "../layouts/TheTwoColumnsLayout";
 import TheTwoColumnsLayout from "@/layouts/TheTwoColumnsLayout";
 import RegisterVue from "@/components/auth/RegisterVue";
 import LoginVue from "@/components/auth/LoginVue";

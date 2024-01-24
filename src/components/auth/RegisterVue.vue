@@ -8,12 +8,11 @@
       <p>
         oder
         <a class="text-vue2" role="button" @click="changeComponent('login')"
-          >Melden Sie sich mit Ihrem Konto an</a
+          >melden Sie sich mit Ihrem Konto an</a
         >
-        <!-- role="button" bedeutet, dass sich der Cursor ändert! -->
       </p>
     </div>
-    <div class="alert alert-danger col-md-8 offset-2">
+    <div class="alert alert-danger col-md-8 offset-2" v-if="error">
       {{ errorDisplayText }}
     </div>
     <Form @submit="submitData" :validation-schema="schema" v-slot="{ errors }">
@@ -55,7 +54,7 @@
           <Field
             as="input"
             name="confirmPassword"
-            type="confirmPassword"
+            type="password"
             class="form-control"
             id="confirmPassword"
           />
@@ -100,16 +99,16 @@ export default {
     const schema = yup.object().shape({
       email: yup
         .string()
-        .required("E-Mail Adresse wird benötigt")
+        .required("E-Mail Adresse wird benötigt.")
         .trim()
         .email("Das ist keine gültige E-Mail Adresse"),
       password: yup
         .string()
         .required("Ein Passwort wird benötigt.")
-        .min(6, "Das Passwort muss mindestend 6 Zeichen lang sein"),
+        .min(6, "Das Passwort muss mindestens sechs Zeichen lang sein."),
       confirmPassword: yup
         .string()
-        .oneOf([yup.ref("password")], "Passwörter stimmen nicht überein"),
+        .oneOf([yup.ref("password")], "Passwörter stimmen nicht überein."),
     });
     return {
       schema,
@@ -123,7 +122,7 @@ export default {
         if (this.error.includes("EMAIL_EXISTS")) {
           return "Die E-Mail Adresse existiert bereits.";
         }
-        return "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sue es noch einmal.";
+        return "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sie es noch einmal.";
       }
       return "";
     },
@@ -139,8 +138,8 @@ export default {
           password: values.password,
         })
         .then(() => {
-          this.loading = false;
-          console.log(this.$store.state);
+          this.isLoading = false;
+          // console.log(this.$store.state);
           this.changeComponent("login");
         })
         .catch((error) => {

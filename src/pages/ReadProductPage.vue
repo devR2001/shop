@@ -4,14 +4,14 @@
       <div class="row">
         <div class="col-12">
           <h1 class="mt-4">
-            Product Details
+            Produktdetails
             <button class="btn btn-lg bg-vue float-end" @click="$router.go(-1)">
               Zurück
             </button>
           </h1>
           <div class="card mt-4" v-if="product">
             <div class="row no-gutters">
-              <div class="col-mg-4">
+              <div class="col-md-4">
                 <img
                   src="https://dummyimage.com/600x400/34495e/fff"
                   class="card-img"
@@ -51,9 +51,8 @@
                   name: 'ReadProduct',
                   params: { id: '-MgEuw10sUAOonJ0gazr' },
                 }"
+                >-MgEuw10sUAOonJ0gazr</router-link
               >
-                -MgEuw10sUAOonJ0gazr
-              </router-link>
             </div>
           </div>
         </div>
@@ -64,7 +63,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import TheShopLayout from "@/layouts/TheShopLayout.vue";
+import TheShopLayout from "@/layouts/TheShopLayout";
 export default {
   name: "ReadProductPage",
   components: {
@@ -73,33 +72,33 @@ export default {
   props: {
     id: String,
   },
-  // data() {
-  //   return {
-  //     id: null,
-  //   };
-  // },
+  /*   data() {
+    return {
+      id: null,
+    };
+  }, */
   computed: {
     product() {
       return this.$store.getters.product(this.id);
     },
   },
-  // created() {
-  //   this.id = this.$route.params.id;
-  //  },
-  // beforeRouteUpdate(to) {
-  //   console.log("to", to);
-  //   console.log("from", from);
-  //   this.id = to.params.id;
-  // },
-  // methods: {
-  //   addItemToCart() {
-  //     this.$store.dispatch("addItemToCart", {
-  //       productId: this.id,
-  //     });
-  //   },
-  // },
+  /*   created() {
+    this.id = this.$route.params.id;
+  }, */
+  /*   beforeRouteUpdate(to) {
+    // console.log(to);
+    // console.log(from);
+    this.id = to.params.id;
+  }, */
+  /*   methods: {
+    addItemToCart() {
+      this.$store.dispatch("addItemToCart", {
+        productId: this.id,
+      });
+    },
+  }, */
   methods: {
-    // ...mapActions(["addItemToCart"]),
+    // ...mapActions(["addItemToCart"])
     ...mapActions({ addProduct: "addItemToCart" }),
   },
 };

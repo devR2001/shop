@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import TheEmptyLayout from "@/layouts/TheEmptyLayout.vue";
+import TheEmptyLayout from "@/layouts/TheEmptyLayout";
 export default {
   name: "NotFoundPage",
   components: {

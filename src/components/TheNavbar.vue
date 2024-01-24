@@ -13,9 +13,9 @@
         </li>
       </ul>
       <button class="btn bg-vue me-3">
-        <i class="fas fa-shopping-cart"></i> Warenkorb ({{ cartTotal }} €)
+        <i class="fas fa-shopping-card"></i> Warenkorb ({{ cartSum }} €)
       </button>
-      <button class="btn bg-vue2" @click="signOut()">
+      <button class="btn bg-vue2" @click="signout()">
         <i class="fas fa-sign-out-alt"></i> Logout
       </button>
     </div>
@@ -36,7 +36,7 @@ export default {
     ...mapGetters({ cartSum: "cartTotal" }),
   },
   methods: {
-    async signOut() {
+    async signout() {
       try {
         await this.$store.dispatch("signout");
         this.$router.push("/");
@@ -48,4 +48,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

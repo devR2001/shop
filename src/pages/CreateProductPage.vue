@@ -14,7 +14,7 @@
           </h1>
           <div class="card mt-4">
             <div class="row no-gutters">
-              <div class="col-mg-4">
+              <div class="col-md-4">
                 <img
                   src="https://dummyimage.com/600x400/34495e/fff"
                   class="card-img"
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import TheShopLayout from "@/layouts/TheShopLayout.vue";
+import TheShopLayout from "@/layouts/TheShopLayout";
 export default {
   name: "CreateProductPage",
   components: {
@@ -60,10 +60,10 @@ export default {
     return {
       product: {
         title: "Produkt " + Math.ceil(Math.random() * 10000),
-        description: ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugiat delectus sapiente tempora vel neque debitis facere
-                      deleniti est pariatur ea. Ipsum temporibus et esse maxime
-                      illum neque nam nobis nesciunt?`,
+        description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Natus hic sapiente quo veritatis assumenda in doloribus
+                      doloremque molestiae minus cum corrupti dolorem minima,
+                      sed iste repellendus unde voluptatem, nihil facilis.`,
         price: Math.ceil(Math.random() * 100),
       },
     };

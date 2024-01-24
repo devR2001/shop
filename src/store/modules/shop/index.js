@@ -16,7 +16,7 @@ const actions = {
     const token = context.rootState.auth.token;
     axios
       .get(
-        `https://vue-3-shop-backend-542b4-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`
+        `https://vue-3-shop-backend-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`
       )
       .then((response) => {
         const productsDO = [];
@@ -41,11 +41,11 @@ const actions = {
     const token = context.rootState.auth.token;
     axios
       .post(
-        `https://vue-3-shop-backend-542b4-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`,
+        `https://vue-3-shop-backend-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`,
         productItem
       )
       .then((response) => {
-        console.log("Response:", response);
+        console.log(response);
       })
       .catch((error) => {
         throw new Error(error);

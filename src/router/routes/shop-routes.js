@@ -11,16 +11,20 @@ const shopRoutes = [
   },
   // Alternative Layout-Strategie
   {
-    path: "v2/shop",
+    path: "/v2/shop",
     component: () => import("@/layouts/v2/TheShopLayout.vue"),
     meta: {
       requiresAuth: true,
     },
-    chrildren: [
+    children: [
       {
         path: "",
         component: () => import("@/pages/v2/ShopPage.vue"),
       },
+/*       {
+        path: "create/product",
+        component: () => import("@/pages/v2/CreateProductPage.vue"),
+      }, */
     ],
   },
   {
@@ -33,9 +37,8 @@ const shopRoutes = [
   {
     path: "/shop/read/product/:id",
     name: "ReadProduct",
-    component: import(
-      /*webpackChunkName: 'group-shop' */ "@/pages/ReadProductPage.vue"
-    ),
+    component: () =>
+      import(/*webpackChunkName: 'group-shop' */ "@/pages/ReadProductPage.vue"),
     props: true,
     meta: {
       requiresAuth: true,

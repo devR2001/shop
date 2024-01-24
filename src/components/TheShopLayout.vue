@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <router-view></router-view>
+            <slot><h1>Hauptbereich</h1></slot>
           </div>
         </div>
       </div>
@@ -24,4 +24,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

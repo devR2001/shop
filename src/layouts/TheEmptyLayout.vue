@@ -1,9 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
-        <slot></slot>
-      </div>
+      <div class="col-12"><slot></slot></div>
     </div>
   </div>
 </template>
@@ -14,4 +12,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

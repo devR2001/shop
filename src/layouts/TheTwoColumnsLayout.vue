@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid" :class="containerClasses">
     <div class="row" :class="rowClasses">
-      <div :class="leftColumnClass">
+      <div :class="leftColumnClasses">
         <slot name="leftCol">
           <h1>Linke Spalte</h1>
         </slot>
       </div>
-      <div :class="rightColumnClass">
+      <div :class="rightColumnClasses">
         <slot name="rightCol">
           <h1>Rechte Spalte</h1>
         </slot>
@@ -40,7 +40,7 @@ export default {
       return [this.rightColumnClass, this.fullsize ? "h-100" : ""];
     },
     rowClasses() {
-      return [this.fullsize ? "h-100" : ""]; //height: 100%
+      return [this.fullsize ? "h-100" : ""];
     },
     containerClasses() {
       return [this.fullsize ? "vh-100" : ""];

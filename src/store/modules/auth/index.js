@@ -33,6 +33,7 @@ const actions = {
       .then((response) => {
         // Daten im LocalStorage speichern
         const expiresIn = Number(response.data.expiresIn) * 1000;
+        // const expiresIn = 3 * 1000;
         const expDate = new Date().getTime() + expiresIn;
 
         localStorage.setItem("token", response.data.idToken);
@@ -104,10 +105,11 @@ const actions = {
     });
   },
   autoSignout(context) {
-    // Serverkommunikation falls notwendig
+    // Server-Kommunikation, falls notwendig
     context.dispatch("signout");
   },
 };
+
 const getters = {
   isAuthenticated: (state) => !!state.token,
   token: (state) => state.token,
