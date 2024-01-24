@@ -1,8 +1,6 @@
-import HomePageVue from "@/pages/HomePage.vue";
-import ShopPage from "@/pages/ShopPage.vue";
+// import HomePage from "@/pages/HomePage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import CreateProductPage from "@/pages/CreateProductPage.vue";
-import ReadProductPage from "@/pages/ReadProductPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 import store from "../store";
@@ -14,7 +12,10 @@ const router = createRouter({
     {
       path: "/",
       alias: "/home",
-      component: HomePageVue,
+      component: () =>
+        import(
+          /*webpackChunkName: 'component-homepage' */ "@/pages/HomePage.vue"
+        ),
       beforeEnter: (to, from, next) => {
         if (store.getters.isAuthenticated) {
           next("/shop");
@@ -25,7 +26,8 @@ const router = createRouter({
     },
     {
       path: "/shop",
-      component: ShopPage,
+      component: () =>
+        import(/*webpackChunkName: 'group-shop' */ "@/pages/ShopPage.vue"),
       meta: {
         requiresAuth: true,
       },
@@ -40,7 +42,9 @@ const router = createRouter({
     {
       path: "/shop/read/product/:id",
       name: "ReadProduct",
-      component: ReadProductPage,
+      component: import(
+        /*webpackChunkName: 'group-shop' */ "@/pages/ReadProductPage.vue"
+      ),
       props: true,
       meta: {
         requiresAuth: true,
