@@ -44,6 +44,7 @@ const router = createRouter({
       props: true,
       meta: {
         requiresAuth: true,
+        enterTransition: "rubberBand",
       },
     },
     {
